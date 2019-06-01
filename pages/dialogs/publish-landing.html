@@ -1,0 +1,23 @@
+<div class="text-center"  ng-if="isLoadingLandingData">
+    <span class="spinner-border spinner-border-lg" role="status" aria-hidden="true"></span>
+    Đang lấy dữ liệu Landing page...
+</div>
+
+<div class="alert alert-danger" role="alert" ng-if="loadHtmlError">
+    Không thể tải dữ liệu HTML của Landing page. Vui lòng xem lại tên miền dành cho Landing page này.
+</div>
+
+<div class="mb-3" style="text-align: left;" ng-if="landingData">
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <label for="domain">Domain</label>
+            <input type="text" class="form-control" id="domain" placeholder="www.example.com" ng-model="domain.text">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <label for="pixel">Facebook Pixel ID</label>
+            <input type="text" class="form-control" id="pixel" placeholder="" ng-model="pixel.text">
+        </div>
+    </div>
+</div>

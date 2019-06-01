@@ -1,0 +1,33 @@
+
+<div class="mb-3" style="text-align: left;">
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <label for="domain">Domains (Cần {{landings.length}} domains để xuất bản)</label>
+            <textarea class="form-control" id="domain" rows="6" ng-model="domains" split-array></textarea>
+            <small id="domainHelp" class="form-text text-muted mt-4">Mỗi domain được đặt trên 1 dòng riêng biệt. Domain không được bao gồm tiền tố http, https. Vui lòng sử dụng domain có thực, nếu không bạn không thể xuất bản được landing page. <br />
+                <br />
+                Ví dụ về domain đúng:
+                <ul>
+                    <li><i class="fas fa-check text-success pr-2"></i>www.example.com</li>
+                    <li><i class="fas fa-check text-success pr-2"></i>example.com</li>
+                    <li><i class="fas fa-check text-success pr-2"></i>abc.example.com</li>
+                    <li><i class="fas fa-check text-success pr-2"></i>www.abc.example.com</li>
+                </ul>
+
+                <br />
+                Ví dụ về domain sai:
+                <ul>
+                    <li><i class="fas fa-times text-danger pr-2"></i>http://www.example.com</li>
+                    <li><i class="fas fa-times text-danger pr-2"></i>http://example.com</li>
+                </ul>
+            </small>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <label for="pixel">Facebook Pixel ID</label>
+            <input type="text" class="form-control" id="pixel" placeholder="" ng-model="pixel.text">
+            <small class="form-text text-muted mt-4">Để trống trường này nếu bạn không muốn thay đổi mã Pixel hiện tại của các landings.</small>
+        </div>
+    </div>
+</div>

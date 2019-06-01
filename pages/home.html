@@ -1,0 +1,47 @@
+<div class="container main-container">
+	<div class="py-5 text-center">
+		<img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+		<h2>Quản lý Landing pages</h2>
+		<p class="lead">Hỗ trợ: Config domains, pixel, google analytics, ... nhanh cho Landing page.</p>
+	</div>
+	<div class="row">
+		<div class="col-md-12 mb-4">
+			<h4 class="mb-3">Ladipage Token</h4>
+			<form class="needs-validation" ng-submit="getLandings()">
+				<div class="input-group mb-3">
+					<input type="text" class="form-control" id="address" placeholder="token" required="" ng-model="token" ng-change="onTokenChange()">
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary" type="button" ng-click="getToken()">Get token</button>
+					</div>
+				</div>
+				<button class="btn btn-primary" type="submit" ng-disabled="isLoadingCollections">
+					<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ng-if="isLoadingCollections"></span>
+					{{isLoadingCollections ? "Đang tải danh sách..." : "Lấy danh sách"}}
+				</button>
+			</form>
+			<hr class="mb-4">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8 order-md-2 mb-4">
+			<div ui-view></div>
+		</div>
+		<div class="col-md-4 order-md-1">
+			<div class="mb-4">
+				<div ng-if="collections">
+					<div ng-repeat="item in collections track by $index" ng-class="{ 'collection-active': item.id === currenCollectionId }">
+						<div>
+							<a class="collection-item" ng-href="/#/c={{item.id}}?token={{token}}">
+								{{item.Name}}
+								<span class="badge badge-secondary pl-2">{{item.TotalChild}}</span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="alert alert-danger" role="alert" ng-if="error">
+					{{error}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

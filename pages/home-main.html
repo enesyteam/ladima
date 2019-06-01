@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-md-12 order-md-1">
+        <h4 class="mb-3">Ladipage Token</h4>
+        <form class="needs-validation" ng-submit="getLandings()">
+            <input type="text" class="form-control mb-3" id="address" placeholder="token" required="" ng-model="token" ng-change="onTokenChange()">
+            <button class="btn btn-primary" type="submit" ng-disabled="isLoadingCollections">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ng-if="isLoadingCollections"></span>
+                {{isLoadingCollections ? "Đang tải..." : "Lấy danh sách"}}
+            </button>
+        </form>
+        <hr class="mb-4">
+        <div class="mb-4">
+            <div ng-if="collections">
+                <div ng-repeat="item in collections track by $index"
+                     ui-sref="home.collection({colId: item.id})" ui-sref-active="active">
+                    <div>
+                        <a href="#">{{item.Name}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
