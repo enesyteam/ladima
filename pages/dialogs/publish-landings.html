@@ -4,6 +4,9 @@
         <div class="col-md-12 mb-4">
             <label for="domain">Domains (Cần {{landings.length}} domains để xuất bản)</label>
             <textarea class="form-control" id="domain" rows="6" ng-model="domains" split-array></textarea>
+            <p class="pt-4" ng-class="{'text-danger': landings.length !== domains.length}">
+                Đã nhập: {{domains.length}} domains.
+            </p>
             <small id="domainHelp" class="form-text text-muted mt-4">Mỗi domain được đặt trên 1 dòng riêng biệt. Domain không được bao gồm tiền tố http, https. Vui lòng sử dụng domain có thực, nếu không bạn không thể xuất bản được landing page. <br />
                 <br />
                 Ví dụ về domain đúng:
