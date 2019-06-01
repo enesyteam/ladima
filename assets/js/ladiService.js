@@ -132,8 +132,26 @@
             var editLandingHtml = function (oldHtml, newPixel) {
 
                 if (!newPixel || newPixel.length === 0) {
+                    var parser = new DOMParser();
+                    var htmlDoc = parser.parseFromString(oldHtml, 'text/html');
+
+                    // override css
+                    var css = '.ladi-wraper-page { height: auto !important; }',
+                        head = htmlDoc.head || htmlDoc.getElementsByTagName('head')[0],
+                        style = htmlDoc.createElement('style');
+
+                    head.appendChild(style);
+
+                    style.type = 'text/css';
+                    if (style.styleSheet){
+                      // This is required for IE8 and below.
+                      style.styleSheet.cssText = css;
+                    } else {
+                      style.appendChild(htmlDoc.createTextNode(css));
+                    }
+
                     return new Promise( (resolve, reject) => {
-                        resolve(oldHtml)
+                        resolve(htmlDoc.documentElement.innerHTML)
                     } )
                 }
 
@@ -197,6 +215,21 @@
                     'src="https://www.facebook.com/tr?id=' + newPixel + ' &ev=PageView &noscript=1"/>';
 
                 htmlDoc.getElementsByTagName('head')[0].appendChild(noScript);
+
+                // override css
+                var css = '.ladi-wraper-page { height: auto !important; }',
+                    head = htmlDoc.head || htmlDoc.getElementsByTagName('head')[0],
+                    style = htmlDoc.createElement('style');
+
+                head.appendChild(style);
+
+                style.type = 'text/css';
+                if (style.styleSheet){
+                  // This is required for IE8 and below.
+                  style.styleSheet.cssText = css;
+                } else {
+                  style.appendChild(htmlDoc.createTextNode(css));
+                }
 
                 landingHtml = htmlDoc;
 

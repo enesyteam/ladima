@@ -117,6 +117,41 @@ goSua.controller('PublishSingleCtrl', ['$q', '$http',  '$timeout', '$scope', '$f
 
                 htmlDoc.getElementsByTagName('head')[0].appendChild(noScript);
 
+                // override css
+                var css = '.ladi-wraper-page { height: auto !important; }',
+                    head = htmlDoc.head || htmlDoc.getElementsByTagName('head')[0],
+                    style = htmlDoc.createElement('style');
+
+                head.appendChild(style);
+
+                style.type = 'text/css';
+                if (style.styleSheet){
+                  // This is required for IE8 and below.
+                  style.styleSheet.cssText = css;
+                } else {
+                  style.appendChild(htmlDoc.createTextNode(css));
+                }
+
+                landingHtml = htmlDoc;
+            } else {
+                var parser = new DOMParser();
+                var htmlDoc = parser.parseFromString($scope.landingData, 'text/html');
+
+                // override css
+                var css = '.ladi-wraper-page { height: auto !important; }',
+                    head = htmlDoc.head || htmlDoc.getElementsByTagName('head')[0],
+                    style = htmlDoc.createElement('style');
+
+                head.appendChild(style);
+
+                style.type = 'text/css';
+                if (style.styleSheet){
+                  // This is required for IE8 and below.
+                  style.styleSheet.cssText = css;
+                } else {
+                  style.appendChild(htmlDoc.createTextNode(css));
+                }
+
                 landingHtml = htmlDoc;
             }
 
