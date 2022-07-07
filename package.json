@@ -68,7 +68,7 @@
     "jade": "^1.11.0",
     "jquery": "^3.2.1",
     "metrics-graphics": "^2.14.0",
-    "moment": "^2.20.1",
+    "moment": "^2.29.4",
     "morgan": "^1.9.0",
     "ng-csv": "^0.3.6",
     "ng-dialog": "^1.4.0",
